@@ -10,9 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
-use App\Repository\ProgramRepository;
-use App\Repository\SeasonRepository;
-use App\Repository\EpisodeRepository;
+use App\Form\ProgramType;
 
 /**
 * @Route("/program", name="program_")
@@ -35,6 +33,35 @@ class ProgramController extends AbstractController
             '/program/index.html.twig',
             ['programs' => $programs]
         );
+    }
+    /**
+     * The controller for the category add form
+     *
+     * @Route("/new", name="new")
+     */
+    public function new(Request $request) : Response
+    {
+        // Create a new Category Object
+        $program = new Program();
+        // Create the associated Form
+        $form = $this->createForm(ProgramType::class, $program);
+        // Get data from HTTP request
+        $form->handleRequest($request);
+        // Was the form submitted ?
+        if ($form->isSubmitted()) {
+            // Deal with the submitted data
+            // Get the Entity Manager
+            $entityManager = $this->getDoctrine()->getManager();
+            // Persist Category Object
+            $entityManager->persist($program);
+            // Flush the persisted object
+            $entityManager->flush();
+            // Finally redirect to categories list
+            return $this->redirectToRoute('program_index');
+        }
+        // Render the form
+        return $this->render('program/new.html.twig', [
+            "form" => $form->createView()]);
     }
     /**
      *
