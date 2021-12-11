@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Program;
+use App\Entity\Actor;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -21,7 +23,13 @@ class ProgramType extends AbstractType
             ->add('country', TextType::class)
             ->add('year', NumberType::class)
             ->add('category', null, ['choice_label' => 'name'])
-        ;
+            ->add('actors', EntityType::class, [
+                'class' => Actor::class,
+                'by_reference' => false,
+                'choice_label' => 'selector',
+                'multiple' => true,
+                'expanded' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,8 +1,11 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}New Serie{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Add series</button>
-    {{ form_end(form) }}
+    <h1>Create new Serie</h1>
+
+    {{ include('season/_form.html.twig') }}
+
+    <a href="{{ path('program_index') }}">back to list</a>
 {% endblock %}
