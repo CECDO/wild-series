@@ -79,7 +79,7 @@ class CategoryController extends AbstractController
                 ->findBy(
                     ['category' => $category->getId()],
                     ['id' => 'DESC'],
-                    3,
+                    10,
                 );
         }
 

@@ -87,4 +87,12 @@ public function removeProgram(Program $program): self
 
     return $this;
     }
+
+/**
+ * @return Collection|Program[]
+ */
+public function getPrograms(): Collection
+{
+    return $this->programs;
+}
 }
