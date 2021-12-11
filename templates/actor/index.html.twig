@@ -8,19 +8,20 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
-                <th>actions</th>
+                <th>Série</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for actor in actors %}
             <tr>
-                <td>{{ actor.id }}</td>
-                <td>{{ actor.name }}</td>
+                <td><a href="{{ path('actor_show', { id: actor.id}) }}">{{ actor.name }}</a></td>
+                <td>{% for program in actor.programs %}
+				    <a href="{{ path("program_show", { id: program.id}) }}">{{program.title}}</a>
+				{% endfor %}</td>
                 <td>
-                    <a href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
-                    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+                    <a href="{{ path('actor_edit', { id: actor.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

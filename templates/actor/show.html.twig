@@ -8,13 +8,16 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ actor.id }}</td>
-            </tr>
-            <tr>
                 <th>Name</th>
                 <td>{{ actor.name }}</td>
             </tr>
+            <tr>
+                <th>Série</th>
+                <td>{% for program in actor.programs %}
+				    <a href="{{ path("program_show", { "id": program.id}) }}">{{program.title}}</a>
+			{% endfor %}</td>
+            </tr>
+            
         </tbody>
     </table>
 
