@@ -82,7 +82,7 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="episode_delete", methods={"POST"})
+     * @Route("/{id}", name="episode_delete", methods={"POST"})
      */
     public function delete(Request $request, Episode $episode, EntityManagerInterface $entityManager): Response
     {

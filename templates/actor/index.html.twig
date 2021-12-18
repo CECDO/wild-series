@@ -18,7 +18,7 @@
             <tr>
                 <td><a href="{{ path('actor_show', { id: actor.id}) }}">{{ actor.name }}</a></td>
                 <td>{% for program in actor.programs %}
-				    <a href="{{ path("program_show", { id: program.id}) }}">{{program.title}}</a>
+				    <a href="{{ path("program_show", { slug: program.id}) }}">{{ program.title }}</a>
 				{% endfor %}</td>
                 <td>
                     <a href="{{ path('actor_edit', { id: actor.id}) }}">edit</a>
