@@ -67,7 +67,7 @@ class ProgramController extends AbstractController
                 ->from('your_email@example.com')
                 ->to('your_email@example.com')
                 ->subject('Une nouvelle série vient d\'être publiée !')
-                ->html('<p>Une nouvelle série vient d\'être publiée sur Wild Séries !</p>');
+                ->html($this->renderView('program/newProgramEmail.html.twig', ['program' => $program]));
 
             $mailer->send($email);
             // Finally redirect to categories list
