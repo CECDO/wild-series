@@ -10,7 +10,7 @@
             <p>{{ program.synopsis }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
             {% for season in program.seasons %}
-            <a href="{{ path('program_season_show', { 'program_id': program.id, 'season_id': season.id }) }}">{{ season.description }}</a>
+            <a href="{{ path('program_season_show', { 'slug': program.title, 'season_id': season.id }) }}">{{ season.description }}</a>
             {% endfor %}
         </div>
     </div>

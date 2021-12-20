@@ -64,10 +64,10 @@ class ProgramController extends AbstractController
             $entityManager->flush();
 
             $email = (new Email())
-                ->from($this->getParameter('mailer_from'))
+                ->from('your_email@example.com')
                 ->to('your_email@example.com')
                 ->subject('Une nouvelle série vient d\'être publiée !')
-                ->html($this->renderView('Program/newProgramEmail.html.twig', ['program' => $program]));
+                ->html('<p>Une nouvelle série vient d\'être publiée sur Wild Séries !</p>');
 
             $mailer->send($email);
             // Finally redirect to categories list
